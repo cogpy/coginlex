@@ -1,0 +1,33 @@
+{
+  "total_nodes": 2306,
+  "total_edges": 80,
+  "total_hyperedges": 20,
+  "node_types": {
+    "principle": 63,
+    "rule": 2215,
+    "domain": 28
+  },
+  "edge_types": {
+    "relationship": 59,
+    "derivation": 21
+  },
+  "levels": {
+    "1": 63,
+    "2": 2215
+  },
+  "top_domains": {
+    "civil": 358,
+    "international": 358,
+    "construction": 348,
+    "labour": 341,
+    "criminal": 336,
+    "environmental": 300,
+    "administrative": 221,
+    "constitutional": 11,
+    "delict": 10,
+    "contract": 8
+  },
+  "average_degree": 0.07,
+  "density": 1.5e-05,
+  "is_connected": false
+}
