@@ -2,6 +2,35 @@
 
 This directory contains a comprehensive legal framework organized by legal branches and jurisdictions.
 
+## Quick Start
+
+### Database Setup
+
+1. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **Configure database connection:**
+   ```bash
+   cp .env.example .env
+   # Edit .env with your Neon PostgreSQL credentials
+   ```
+
+3. **Test connection:**
+   ```bash
+   ./test_connection.sh
+   # Or: python hypergraph/db_connect.py --test
+   ```
+
+4. **Initialize database:**
+   ```bash
+   python hypergraph/db_connect.py --init
+   python hypergraph/db_connect.py --load
+   ```
+
+See [hypergraph/database/README.md](hypergraph/database/README.md) for detailed database setup instructions.
+
 ## Directory Structure
 
 ```

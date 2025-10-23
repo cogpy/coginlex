@@ -1,0 +1,8 @@
+# SCMLex Hypergraph Requirements
+
+# Database connectivity
+psycopg2-binary>=2.9.9
+python-dotenv>=1.0.0
+
+# Hypergraph processing
+networkx>=3.0
