@@ -87,7 +87,8 @@ hypergraph/
 ├── build_hypergraph.py                # Build NetworkX hypergraph
 ├── query_hypergraph.py                # Query and traversal functions
 ├── visualize_hypergraph.py            # Visualization tools
-├── db_integration.py                  # Database integration
+├── db_integration.py                  # Database schema generation
+├── db_connect.py                      # Database connection utility
 │
 ├── tuples.json                        # Extracted entity-relation tuples (1.1 MB)
 ├── scmlex_hypergraph.json             # Hypergraph in JSON format (834 KB)
@@ -105,6 +106,7 @@ hypergraph/
 │
 └── database/
     ├── README.md                      # Database setup instructions
+    ├── CONNECTION_GUIDE.md            # Connection examples and troubleshooting
     ├── schema.sql                     # PostgreSQL schema
     └── sample_queries.sql             # Example SQL queries
 ```
@@ -176,14 +178,42 @@ python3 visualize_hypergraph.py scmlex_hypergraph.pkl /path/to/output/dir
 
 #### Setup PostgreSQL Database
 
+**Quick Start:**
 ```bash
-# Using psql
-psql -h your-host -U your-user -d your-database -f database/schema.sql
+# 1. Install dependencies
+pip install -r requirements.txt
 
-# Or use Supabase/Neon SQL Editor
+# 2. Configure connection
+cp .env.example .env
+# Edit .env with your Neon database credentials
+
+# 3. Test connection
+python hypergraph/db_connect.py --test
+
+# 4. Initialize schema and load data
+python hypergraph/db_connect.py --init
+python hypergraph/db_connect.py --load
 ```
 
+**Manual Setup:**
+```bash
+# Using psql with connection string
+psql 'postgresql://user:password@host/database?sslmode=require' -f database/schema.sql
+
+# Or use Neon/Supabase SQL Editor
+```
+
+See [database/README.md](database/README.md) for detailed instructions and [database/CONNECTION_GUIDE.md](database/CONNECTION_GUIDE.md) for connection examples.
+
 #### Run Sample Queries
+
+```bash
+# Using the utility
+python hypergraph/db_connect.py --query "SELECT * FROM find_principles_by_domain('contract');"
+
+# Or using psql
+psql $DATABASE_URL -c "SELECT * FROM find_principles_by_domain('contract');"
+```
 
 ```sql
 -- Find contract law principles
